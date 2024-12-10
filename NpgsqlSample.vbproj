@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C290B70-91EB-4AA5-A2EF-15496A402FFA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <StartupObject>NpgsqlSample.Module1</StartupObject>
+    <RootNamespace>NpgsqlSample</RootNamespace>
+    <AssemblyName>NpgsqlSample</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Console</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>NpgsqlSample.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>NpgsqlSample.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=6.4.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework6.Npgsql.6.4.3\lib\net461\EntityFramework6.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.1.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>packages\Npgsql.4.1.3\lib\net461\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activity.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AMTQuestion.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIAccessKey.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIMonitor.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIOrder.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIOrderAllergy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIOrderDiagnosis.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIOrderMedication.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APIOrderTask.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="APNSNotification.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditTrail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Activity.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_AMTQuestion.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIAccessKey.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIMonitor.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIOrder.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIOrderAllergy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIOrderDiagnosis.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIOrderMedication.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APIOrderTask.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_APNSNotification.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingInvoice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingInvoiceConsumable.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingInvoiceService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingPackage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingPackageInformation.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingPackageRequest.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingProposal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingProposalService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_BillingService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Branch.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_C4WDeviceToken.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlan.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanDetail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanStatus.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSub.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSubActivity.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSubCPGoals.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSubGoal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSubIntervention.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSubProblemList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CarePlanSubProblemListGoal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CareReport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CareReportConfig.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CareReportRehabilitation.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CareReportSocialSupport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CareReportSystemInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Chat.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Code.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CodeType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_CPGoals.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Diagnosis.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_DischargeSummaryReport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_DischargeSummaryReportAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Disease.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_DiseaseInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_DiseaseSubInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_DiseaseVitalSignType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EBASDEPQuestion.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Enquiry.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EnquiryAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EnquiryConfig.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EnquiryEscPerson.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EnquiryLanguage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EnquirySCM.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EnquiryServicesRequired.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Event.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EventUser.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_EventUserLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ExternalDoctor.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_GeoFencing.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Group.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_GroupRole.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ICAWoundCare.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_InitialCareAssessment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_InitialCareAssessmentAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_InitialCareAssessmentSpecialInstruction.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_InitialCareAssessmentVitalSign.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Intervention.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Item.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ItemStock.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_LoginDevice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_MailSettings.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_MedicationVitalSignType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_MobileAppVersioning.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_MultiDisciplinaryMeeting.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_MultiDisciplinaryMeetingDetail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NotificationChat.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NotificationEvent.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NotificationMessageTemplates.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Notifications.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NotificationTask.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NotificationVitalSignDetails.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NutritionTask.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_NutritionTaskReference.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Otp.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Package.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Patient.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientAccessLine.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientAdditionalInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientAMT.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientAMTAnswer.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientBradenScale.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientClinician.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientDrugAllergy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientEBASDEP.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientEBASDEPAnswer.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientFamilyHistory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientGCS.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientImmunisation.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientLanguage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMBI.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMedicalHistory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMedication.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMedicationConsume.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMedicationConsumeAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMedicationSupply.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMFS.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientMMSE.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientNutrition.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientOtherAllergy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientPackage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientProfile.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientRAF.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientReferral.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientReferralService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientSocialSupport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientSpecialIndicator.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWound.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundDraft.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundReviewBy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisit.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisitAppearance.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisitCleansingItem.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisitClinician.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisitTreatment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisitTreatmentList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_PatientWoundVisitTreatmentObjectives.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ProblemList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ProblemListGoal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Receipt.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ReceiptForInvoice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_RegisteredDevice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_RegisteredDeviceV2.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ResidentAssessmentCategory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Role.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ScheduledTasks.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ServiceForBilling.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ServiceForBillingCost.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_ServiceSkillset.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_SyncPatientLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_SyncWoundLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_SyncWoundVisitLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_SysConfig.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_SystemForDisease.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Task.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TaskFileAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TaskServicesRequired.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TaskSpecificDate.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TaskUser.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TaskUserLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TaskUserLogAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TD_WoundAssessmentFactor.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TeleconsultationRecording.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TeleconsultationReport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Thresholds.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TreatmentListItem.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_TreatmentTOL.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Types.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UploadFile.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserAddress.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserBranch.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserCategory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserCategoryRole.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserLanguage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserOrganization.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserRole.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_Users.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserSkillset.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_UserUserType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_VitalSignDetails.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_VitalSignRelationships.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_VitalSigns.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_VitalSignTypes.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_VitalSignTypeThreshold.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit_WoundConsolidatedEmail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingInvoice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingInvoiceConsumable.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingInvoiceService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingPackage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingPackageInformation.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingPackageRequest.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingProposal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingProposalService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingService.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Branch.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C4WDeviceToken.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C4WImage.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlan.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlanDetail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlanStatus.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlanSub.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlanSubGoal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlanSubProblemList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarePlanSubProblemListGoal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CareReport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CareReportConfig.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CareReportRehabilitation.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CareReportSocialSupport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CareReportSystemInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Chat.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Code.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CPGoals.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__EFMigrationsHistory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataObject.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataObject.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataObject.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataObject.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataObject.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnosis.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DischargeSummaryReport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DischargeSummaryReportAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Disease.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiseaseInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiseaseSubInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiseaseVitalSignType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EBASDEPQuestion.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enquiry.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnquiryAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EnquiryConfig.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Event.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventUser.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventUserLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalDoctor.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Facility.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeoFencing.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupRole.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InitialCareAssessment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InitialCareAssessmentAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InitialCareAssessmentSpecialInstruction.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InitialCareAssessmentVitalSign.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IntegrationApiRequestLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Intervention.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Item.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemStock.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginDevice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MailSettings.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedicationVitalSignType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MobileAppVersioning.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Module1.vb" />
+    <Compile Include="MultiDisciplinaryMeeting.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MultiDisciplinaryMeetingDetail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NotificationChat.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationEvent.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationMessageTemplates.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationTask.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationVitalSignDetails.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NutritionTask.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NutritionTaskReference.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Otp.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Package.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patient.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAccessLine.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAdditionalInfo.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAMT.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAMTAnswer.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientBradenScale.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientClinician.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDrugAllergy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientEBASDEP.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientEBASDEPAnswer.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientFamilyHistory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientGCS.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientImmunisation.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMBI.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMedicalHistory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMedication.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMedicationConsume.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMedicationConsumeAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMFS.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMMSE.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientNutrition.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientOtherAllergy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientProfile.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientRAF.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientReferral.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSocialSupport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWound.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundDraft.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundDraftTreatmentList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundReviewBy.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundVisit.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundVisitClinician.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundVisitTreatment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientWoundVisitTreatmentList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProblemList.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProblemListGoal.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Receipt.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiptForInvoice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecentView.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegisteredDevice.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegisteredDeviceV2.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResidentAssessmentCategory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resource.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduledTasks.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForBilling.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForBillingCost.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SyncPatientLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SyncWoundLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SyncWoundVisitLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysConfig.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemForDisease.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskFileAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskSpecificDate.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskUser.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskUserLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskUserLogAttachment.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TD_WoundAssessmentFactor.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeleconsultationRecording.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeleconsultationReport.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Thresholds.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TreatmentListItem.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TreatmentTOL.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Types.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UploadFile.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAddress.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategory.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategoryRole.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UUIDLog.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VitalSignDetails.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VitalSignRelationships.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VitalSigns.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VitalSignTypes.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VitalSignTypeThreshold.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WoundConsolidatedEmail.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WoundUserCategoryParentChild.vb">
+      <DependentUpon>DataObject.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataObject.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataObject.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataObject.edmx.diagram">
+      <DependentUpon>DataObject.edmx</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataObject.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataObject.edmx</DependentUpon>
+      <LastGenOutput>DataObject.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="DataObject.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataObject.edmx</DependentUpon>
+      <LastGenOutput>DataObject.vb</LastGenOutput>
+    </Content>
+    <Content Include="sample-db-table.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>
